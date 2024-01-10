@@ -15,10 +15,35 @@ public class Main {
     public static List<Employee> listEmployees = ManagerEmployee.listEmployee;
 
     public static void main(String[] args) {
-        Employee employee = newEmployee();
-        ManagerEmployee.addEmployee(employee);
-        System.out.println(ManagerEmployee.listEmployee);
+        int choice = -1;
+        do {
+            System.out.println("MENU");
+            System.out.println("0. Exit");
+            System.out.println("1. Thêm nhân viên ");
+            System.out.println("2. Nhân viên ");
+            System.out.println("3. Sửa nhân viên ");
+            System.out.println("Nhập lựa chọn của bạn");
+            Scanner scanner = new Scanner(System.in);
+            choice = scanner.nextInt();
+            switch (choice) {
+                case 0 :
+                    System.exit(0);
+                case 1 :
+                    Employee employee = newEmployee();
+                    ManagerEmployee.addEmployee(employee);
+                    System.out.println(ManagerEmployee.listEmployee);
+                    break;
+                case 2 :
+                    int index = removeEmployee();
+                    ManagerEmployee.deleteByIndex(index);
+                    System.out.println(ManagerEmployee.listEmployee);
+                    break;
+                case 3:
+
+            }
+        }while (choice != -1);
     }
+
     public static Employee newEmployee() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập id");
@@ -39,7 +64,6 @@ public class Main {
         String type = scanner0.nextLine();
         switch (type) {
             case "F":
-
                 Scanner scanner1 = new Scanner(System.in);
                 System.out.println("Mời bạn nhap thời gian bắt đầu làm việc yyyy-MM-dd ");
                 String timeStartWork = scanner1.nextLine();
@@ -65,5 +89,11 @@ public class Main {
             default:
                 return null;
         }
+    }
+    public static int removeEmployee() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nhập index mà bạn muốn xóa");
+        int index = scanner.nextInt();
+        return index;
     }
 }
