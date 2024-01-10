@@ -20,7 +20,20 @@ public class ManagerEmployee {
     public static void addEmployee(Employee employee) {
         listEmployee.add(employee);
     }
-    public static void deleteByIndex(int index) {
-        listEmployee.remove(index);
+    public static void deleteByIndex(String id) {
+        removeById(id);
     }
+
+    private static void removeById(String id) {
+        for (int i =0 ;i < listEmployee.size();) {
+            if (listEmployee.get(i).getId().equals(id))
+                listEmployee.remove(listEmployee.get(i));
+            break;
+        }
+    }
+
+    public static void editByIndex (int index,Employee employee) {
+        listEmployee.set(index,employee);
+    }
+
 }
