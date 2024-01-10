@@ -70,4 +70,15 @@ public abstract class Employee {
 
     public abstract double getSalary();
 
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", gender='" + gender + '\'' +
+                ", email='" + email + '\'' +
+                ", nationality='" + nationality + '\'' +
+                '}';
+    }
 }

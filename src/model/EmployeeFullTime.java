@@ -6,27 +6,27 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
     private LocalDate dayStartWork;
     private int daysWork;
     private int salaryInDays;
-    private double bonus;
-    private double fine;
+    private int overTime;
+    private int late;
     public EmployeeFullTime() {
     }
 
 
-    public EmployeeFullTime(LocalDate dayStartWork, int daysWork, int salaryInDays, double bonus, double fine) {
+    public EmployeeFullTime(LocalDate dayStartWork, int daysWork, int salaryInDays, int overTime, int late) {
         this.dayStartWork = dayStartWork;
         this.daysWork = daysWork;
         this.salaryInDays = salaryInDays;
-        this.bonus = bonus;
-        this.fine = fine;
+        this.overTime = overTime;
+        this.late = late;
     }
 
-    public EmployeeFullTime(String id, String name, int age, String gender, String email, String nationality, LocalDate dayStartWork, int daysWork, int salaryInDays, double bonus, double fine) {
+    public EmployeeFullTime(String id, String name, int age, String gender, String email, String nationality, LocalDate dayStartWork, int daysWork, int salaryInDays, int overTime, int late) {
         super(id, name, age, gender, email, nationality);
         this.dayStartWork = dayStartWork;
         this.daysWork = daysWork;
         this.salaryInDays = salaryInDays;
-        this.bonus = bonus;
-        this.fine = fine;
+        this.overTime = overTime;
+        this.late = late;
     }
 
     public LocalDate getDayStartWork() {
@@ -37,20 +37,20 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
         this.dayStartWork = dayStartWork;
     }
 
-    public double getBonus() {
-        return bonus;
+    public double getOverTime() {
+        return overTime;
     }
 
-    public void setBonus(double bonus) {
-        this.bonus = bonus;
+    public void setOverTime(int overTime) {
+        this.overTime = overTime;
     }
 
-    public double getFine() {
-        return fine;
+    public int getLate() {
+        return late;
     }
 
-    public void setFine(double fine) {
-        this.fine = fine;
+    public void setLate(int late) {
+        this.late = late;
     }
 
     public int getDaysWork() {
@@ -71,7 +71,7 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
 
     @Override
     public double getSalary() {
-        return 0;
+        return getSalaryInDays() * getDaysWork() + getOverTime() * getSalaryInDays() / 6 - getLate() * getSalaryInDays() * 0.5;
     }
     @Override
     public double getSalaryAfterInsurance() {
@@ -94,5 +94,22 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
         }else {
             return getSalary();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeFullTime{" +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                ", gender='" + getGender() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", nationality='" + getNationality() + '\'' +
+                "dayStartWork=" + dayStartWork +
+                ", daysWork=" + daysWork +
+                ", salaryInDays=" + salaryInDays +
+                ", overTime=" + overTime +
+                ", late=" + late +
+                '}';
     }
 }

@@ -42,4 +42,18 @@ public class EmployeePartTime extends Employee {
     public double getSalary() {
         return getSalaryInHour() * getHourWork();
     }
+
+    @Override
+    public String toString() {
+        return "EmployeePartTime{" +
+                "id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", age=" + getAge() +
+                ", gender='" + getGender() + '\'' +
+                ", email='" + getEmail() + '\'' +
+                ", nationality='" + getNationality() + '\'' +
+                "hourWork=" + hourWork +
+                ", salaryInHour=" + salaryInHour +
+                '}';
+    }
 }
