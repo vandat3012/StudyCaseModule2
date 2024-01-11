@@ -86,11 +86,11 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
         }
     }
     @Override
-    public double salaryReality() {
+    public double getSalaryReality() {
         if (getSalaryAfterIncrease() > 60000000) {
             return getSalaryAfterIncrease() * 0.9;
         }else if (getSalaryAfterIncrease() < 10000000){
-            return getSalaryAfterIncrease();
+            return getSalaryAfterIncrease() * 0.98;
         }else {
             return getSalaryAfterIncrease() * 0.95;
         }
@@ -105,11 +105,11 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
                 ", gender='" + getGender() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", nationality='" + getNationality() + '\'' +
-                "dayStartWork=" + dayStartWork +
-                ", daysWork=" + daysWork +
-                ", salaryInDays=" + salaryInDays +
-                ", overTime=" + overTime +
-                ", late=" + late +
-                '}';
+                "dayStartWork=" + dayStartWork + '\'' +
+                ", daysWork=" + daysWork + '\'' +'\'' +
+                ", salaryInDays=" + salaryInDays + '\'' +
+                ", overTime=" + overTime + '\'' +
+                ", late=" + late + '\'' +
+                '\n' + '}';
     }
 }

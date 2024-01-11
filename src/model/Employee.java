@@ -3,7 +3,7 @@ package model;
 
 import java.io.Serializable;
 
-public abstract class Employee implements Serializable {
+public abstract class Employee implements Comparable<Employee>,Serializable {
     private String id;
     private String name;
     private int age;
@@ -82,5 +82,9 @@ public abstract class Employee implements Serializable {
                 ", email='" + email + '\'' +
                 ", nationality='" + nationality + '\'' +
                 '}';
+    }
+    @Override
+    public int compareTo(Employee employee) {
+        return this.getAge() - employee.getAge();
     }
 }

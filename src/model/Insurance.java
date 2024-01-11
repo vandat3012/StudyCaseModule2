@@ -1,5 +1,5 @@
 package model;
 
 public interface Insurance {
-    public double salaryReality();
+    public double getSalaryReality();
 }

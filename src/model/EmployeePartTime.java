@@ -1,6 +1,5 @@
 package model;
 
-import model.Employee;
 
 
 public class EmployeePartTime extends Employee {
@@ -52,8 +51,8 @@ public class EmployeePartTime extends Employee {
                 ", gender='" + getGender() + '\'' +
                 ", email='" + getEmail() + '\'' +
                 ", nationality='" + getNationality() + '\'' +
-                "hourWork=" + hourWork +
-                ", salaryInHour=" + salaryInHour +
-                '}';
+                "hourWork=" + hourWork + '\'' +
+                ", salaryInHour=" + salaryInHour + '\'' +
+                '\n' + '}';
     }
 }
