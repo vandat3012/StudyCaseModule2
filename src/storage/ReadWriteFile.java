@@ -51,7 +51,6 @@ public class ReadWriteFile implements IReadWriteFile{
                 if(instance==null)
                     instance=new ReadWriteFile();
             }
-
         return instance;
     }
 }

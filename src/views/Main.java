@@ -1,6 +1,7 @@
 package views;
 
 import controller.ManagerEmployee;
+import controller.RegexInformationInput;
 import model.Employee;
 import model.EmployeeFullTime;
 import model.EmployeePartTime;
@@ -22,6 +23,11 @@ public class Main {
             System.out.println("2. Xóa nhân viên ");
             System.out.println("3. Sửa nhân viên ");
             System.out.println("4. In ra danh sách nhân viên");
+            System.out.println("5. Tổng lương nhân viên");
+            System.out.println("6. Tổng lương nhân viên fulltime");
+            System.out.println("7. Tổng lương nhân viên parttime");
+            System.out.println("8. Số tiền đã tăng cho nhân viên lâu năm");
+            System.out.println("9. Số tiền bảo hiểm nhân viên đax đóng");
             System.out.println("Nhập lựa chọn của bạn");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
@@ -48,20 +54,19 @@ public class Main {
     }
 
     public static Employee newEmployee() {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập id");
-        String id = scanner.nextLine();
+        String id = RegexInformationInput.getRegexId();
         System.out.println("Nhập name");
-        String name = scanner.nextLine();
+        String name = RegexInformationInput.getRegexName();
         System.out.println("Nhập age");
-        int age = scanner.nextInt();
+        int age = Integer.parseInt(RegexInformationInput.getRegexAge());
         Scanner scanner0 = new Scanner(System.in);
         System.out.println("Nhập giới tính");
         String gender = scanner0.nextLine();
         System.out.println("Nhập email");
-        String email = scanner0.nextLine();
+        String email = RegexInformationInput.getRegexEmail();
         System.out.println("Nhập nationally");
-        String nationally = scanner0.nextLine();
+        String nationally = RegexInformationInput.getRegexNation();
         System.out.println("Bạn mốn thêm nhân viên fulltime or parttime");
         System.out.println("fulltime vui lòng nhập 'F' or parttime vui lòng nhập 'P'");
         String type = scanner0.nextLine();
@@ -72,21 +77,20 @@ public class Main {
                 String timeStartWork = scanner1.nextLine();
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
                 System.out.println("Số ngày làm việc");
-                int daysWork = scanner1.nextInt();
+                int daysWork = Integer.parseInt(RegexInformationInput.getRegexNum());
                 System.out.println("Lương 1 ngay ");
-                int salaryInADay = scanner1.nextInt();
+                int salaryInADay = Integer.parseInt(RegexInformationInput.getRegexNum());
                 System.out.println("Số giờ tăng ca");
-                int overTime = scanner1.nextInt();
+                int overTime = Integer.parseInt(RegexInformationInput.getRegexNum());
                 System.out.println("Số ngày đi trễ ");
-                int late = scanner1.nextInt();
+                int late = Integer.parseInt(RegexInformationInput.getRegexNum());
                 EmployeeFullTime employeeFullTime = new EmployeeFullTime(id, name, age, gender, email, nationally, LocalDate.parse(timeStartWork, formatter), daysWork, salaryInADay, overTime, late);
                 return employeeFullTime;
             case "P":
-                Scanner scanner2 = new Scanner(System.in);
                 System.out.println("Nhập số giờ làm việc");
-                int hourWork = scanner2.nextInt();
+                int hourWork = Integer.parseInt(RegexInformationInput.getRegexNum());
                 System.out.println("Nhap so tien trong 1 giờ");
-                int salaryInAHour = scanner2.nextInt();
+                int salaryInAHour = Integer.parseInt(RegexInformationInput.getRegexNum());
                 EmployeePartTime employeePartTime = new EmployeePartTime(id, name, age, gender, email, nationally, hourWork, salaryInAHour);
                 return employeePartTime;
             default:
@@ -106,50 +110,49 @@ public class Main {
         System.out.println("Nhập index mà bạn muốn sua");
         int index = scanner.nextInt();
         if (listEmployee.get(index) instanceof EmployeePartTime) {
-            Scanner scanner3 = new Scanner(System.in);
             System.out.println("Nhập id");
-            String id = scanner3.nextLine();
+            String id = RegexInformationInput.getRegexId();
             System.out.println("Nhập name");
-            String name = scanner3.nextLine();
+            String name = RegexInformationInput.getRegexName();
             System.out.println("Nhập age");
-            int age = scanner3.nextInt();
+            int age = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Nhập giới tính");
-            String gender = scanner3.nextLine();
+            String gender = RegexInformationInput.getRegexGender();
             System.out.println("Nhập email");
-            String email = scanner3.nextLine();
+            String email = RegexInformationInput.getRegexEmail();
             System.out.println("Nhập nationally");
-            String nationally = scanner3.nextLine();
+            String nationally = RegexInformationInput.getRegexNation();
             System.out.println("Nhập số giờ làm việc");
-            int hourWork = scanner3.nextInt();
+            int hourWork = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Nhap so tien trong 1 giờ");
-            int salaryInAHour = scanner3.nextInt();
+            int salaryInAHour = Integer.parseInt(RegexInformationInput.getRegexAge());
             EmployeePartTime employeePartTime = new EmployeePartTime(id, name, age, gender, email, nationally, hourWork, salaryInAHour);
             ManagerEmployee.editByIndex(index, employeePartTime);
-        } else if (listEmployee.get(index) instanceof EmployeeFullTime) {
-            Scanner scanner4 = new Scanner(System.in);
+        } else {
+            Scanner scanner1 = new Scanner(System.in);
             System.out.println("Nhập id");
-            String id = scanner4.nextLine();
+            String id = RegexInformationInput.getRegexId();
             System.out.println("Nhập name");
-            String name = scanner4.nextLine();
+            String name = RegexInformationInput.getRegexName();
             System.out.println("Nhập age");
-            int age = scanner4.nextInt();
+            int age = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Nhập giới tính");
-            String gender = scanner4.nextLine();
+            String gender = RegexInformationInput.getRegexGender();
             System.out.println("Nhập email");
-            String email = scanner4.nextLine();
+            String email = RegexInformationInput.getRegexEmail();
             System.out.println("Nhập nationally");
-            String nationally = scanner4.nextLine();
+            String nationally = RegexInformationInput.getRegexNation();
             System.out.println("Mời bạn nhap thời gian bắt đầu làm việc yyyy-MM-dd ");
-            String timeStartWork = scanner4.nextLine();
+            String timeStartWork = scanner1.nextLine();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
             System.out.println("Số ngày làm việc");
-            int daysWork = scanner4.nextInt();
+            int daysWork = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Lương 1 ngay ");
-            int salaryInADay = scanner4.nextInt();
+            int salaryInADay = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Số giờ tăng ca");
-            int overTime = scanner4.nextInt();
+            int overTime = Integer.parseInt(RegexInformationInput.getRegexAge());
             System.out.println("Số ngày đi trễ ");
-            int late = scanner4.nextInt();
+            int late = Integer.parseInt(RegexInformationInput.getRegexAge());
             EmployeeFullTime employeeFullTime = new EmployeeFullTime(id, name, age, gender, email, nationally, LocalDate.parse(timeStartWork, formatter), daysWork, salaryInADay, overTime, late);
             ManagerEmployee.editByIndex(index, employeeFullTime);
         }

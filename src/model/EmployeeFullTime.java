@@ -73,16 +73,6 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
     public double getSalary() {
         return getSalaryInDays() * getDaysWork() + getOverTime() * getSalaryInDays() / 6 - getLate() * getSalaryInDays() * 0.5;
     }
-    @Override
-    public double getSalaryAfterInsurance() {
-        if (getSalaryAfterIncrease() > 60000000) {
-            return getSalaryAfterIncrease() * 0.9;
-        }else if (getSalaryAfterIncrease() < 10000000){
-            return getSalaryAfterIncrease();
-        }else {
-            return getSalaryAfterIncrease() * 0.95;
-        }
-    }
 
     @Override
     public double getSalaryAfterIncrease() {
@@ -93,6 +83,16 @@ public class EmployeeFullTime extends Employee implements Insurance,LongTimeEmpl
             return getSalary() * 1.4;
         }else {
             return getSalary();
+        }
+    }
+    @Override
+    public double salaryReality() {
+        if (getSalaryAfterIncrease() > 60000000) {
+            return getSalaryAfterIncrease() * 0.9;
+        }else if (getSalaryAfterIncrease() < 10000000){
+            return getSalaryAfterIncrease();
+        }else {
+            return getSalaryAfterIncrease() * 0.95;
         }
     }
 
