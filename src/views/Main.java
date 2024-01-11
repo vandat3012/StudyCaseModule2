@@ -5,14 +5,13 @@ import model.Employee;
 import model.EmployeeFullTime;
 import model.EmployeePartTime;
 
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-    public static List<Employee> listEmployees = ManagerEmployee.listEmployee;
+  public static List<Employee> listEmployee = ManagerEmployee.listEmployee;
 
     public static void main(String[] args) {
         int choice = -1;
@@ -22,6 +21,7 @@ public class Main {
             System.out.println("1. Thêm nhân viên ");
             System.out.println("2. Xóa nhân viên ");
             System.out.println("3. Sửa nhân viên ");
+            System.out.println("4. In ra danh sách nhân viên");
             System.out.println("Nhập lựa chọn của bạn");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextInt();
@@ -35,12 +35,13 @@ public class Main {
                     break;
                 case 2:
                     String id = removeEmployee();
-                    ManagerEmployee.deleteByIndex(id);
+                    ManagerEmployee.deleteById(id);
                     System.out.println(ManagerEmployee.listEmployee);
                     break;
                 case 3:
-
+                    editEmployee();
                 case 4:
+                    System.out.println(ManagerEmployee.listEmployee);
 
             }
         } while (choice != -1);
@@ -104,7 +105,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Nhập index mà bạn muốn sua");
         int index = scanner.nextInt();
-        if (listEmployees.get(index) instanceof EmployeePartTime) {
+        if (listEmployee.get(index) instanceof EmployeePartTime) {
             Scanner scanner3 = new Scanner(System.in);
             System.out.println("Nhập id");
             String id = scanner3.nextLine();
@@ -124,7 +125,7 @@ public class Main {
             int salaryInAHour = scanner3.nextInt();
             EmployeePartTime employeePartTime = new EmployeePartTime(id, name, age, gender, email, nationally, hourWork, salaryInAHour);
             ManagerEmployee.editByIndex(index, employeePartTime);
-        } else if (listEmployees.get(index) instanceof EmployeeFullTime) {
+        } else if (listEmployee.get(index) instanceof EmployeeFullTime) {
             Scanner scanner4 = new Scanner(System.in);
             System.out.println("Nhập id");
             String id = scanner4.nextLine();

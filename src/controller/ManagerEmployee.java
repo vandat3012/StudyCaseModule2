@@ -1,12 +1,14 @@
 package controller;
 
 import model.Employee;
+import storage.ReadWriteFile;
+;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManagerEmployee {
-    public static List<Employee> listEmployee = new ArrayList<>();
+    public static List<Employee> listEmployee = ReadWriteFile.getInstance().readFile();
     public ManagerEmployee() {
     }
 
@@ -18,9 +20,10 @@ public class ManagerEmployee {
         ManagerEmployee.listEmployee = listEmployee;
     }
     public static void addEmployee(Employee employee) {
-        listEmployee.add(employee);
+      listEmployee.add(employee);
+      ReadWriteFile.getInstance().writeFile(listEmployee);
     }
-    public static void deleteByIndex(String id) {
+    public static void deleteById(String id) {
         removeById(id);
     }
 
