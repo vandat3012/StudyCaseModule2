@@ -20,6 +20,7 @@ public class ManagerEmployee {
     }
 
     public static void setListEmployee(List<Employee> listEmployee) {
+        ReadWriteFile.getInstance().writeFile(listEmployee);
         ManagerEmployee.listEmployee = listEmployee;
     }
     public static void addEmployee(Employee employee) {
@@ -28,15 +29,18 @@ public class ManagerEmployee {
     }
 
     public static void removeById(String id) {
-        for (int i =0 ;i < listEmployee.size();) {
-            if (listEmployee.get(i).getId().equals(id))
-                listEmployee.remove(listEmployee.get(i));
-            break;
+        for (Employee e : listEmployee) {
+            if (e.getId().equals(id)) {
+                listEmployee.remove(e);
+                ReadWriteFile.getInstance().writeFile(listEmployee);
+                return;
+            }
         }
     }
 
     public static void editByIndex (int index,Employee employee) {
         listEmployee.set(index,employee);
+        ReadWriteFile.getInstance().writeFile(listEmployee);
     }
 
     public static double totalSalaryReality() {
@@ -50,5 +54,54 @@ public class ManagerEmployee {
         }
         return total;
     }
+    public static double totalSalaryPartTime() {
+        int total = TOTAL;
+        for (Employee e : listEmployee) {
+            if(e instanceof EmployeeFullTime) {
+                total += (int) ((EmployeeFullTime) e).getSalaryReality();
+            }
+        }
+        return total;
+    }
+    public static double totalSalaryFullTime() {
+        int total = TOTAL;
+        for (Employee e : listEmployee) {
+            if (e instanceof EmployeePartTime) {
+                total += (int) e.getSalary();
+            }
+        }
+        return total;
+    }
+    public static double averageSalary () {
+        int total = TOTAL;
+        int count = COUNT;
+        for (Employee e : listEmployee) {
+            if (e instanceof EmployeeFullTime) {
+                total += (int) ((EmployeeFullTime) e).getSalaryReality();
+                count ++;
+            }else {
+                total += (int) e.getSalary();
+                count ++;
+            }
+        }
+        return (double) total /count;
+    }
 
+    public static double initialSalary () {
+        int total = TOTAL;
+        for (Employee e : listEmployee) {
+            total += (int) e.getSalary();
+        }
+        return total;
+    }
+
+    public static double differenceAmount() {
+       return totalSalaryReality() - initialSalary();
+    }
+    public static void arrangeAge() {
+        Collections.sort(listEmployee);
+        for (Employee e : listEmployee) {
+            System.out.println(e);
+        }
+    }
 }
