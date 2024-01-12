@@ -9,7 +9,7 @@ import java.util.List;
 public class ReadWriteFile implements IReadWriteFile{
 
     public List<Employee> readFile(){
-        File file = new File("txt.txt");
+        File file = new File("hello.dat");
         try {
             InputStream inputStream = new  FileInputStream(file);
             ObjectInputStream ois = new ObjectInputStream(inputStream);
@@ -28,7 +28,7 @@ public class ReadWriteFile implements IReadWriteFile{
 
 
     public void writeFile(List<Employee> bookList){
-        File file = new File("txt.txt");
+        File file = new File("hello.dat");
         try {
             OutputStream os = new FileOutputStream(file);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(os);

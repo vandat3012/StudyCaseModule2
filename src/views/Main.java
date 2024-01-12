@@ -67,6 +67,7 @@ public class Main {
                     System.out.println(ManagerEmployee.differenceAmount());
                     break;
                 case 10:
+                    ManagerEmployee.arrangeAge();
                     break;
 
             }
