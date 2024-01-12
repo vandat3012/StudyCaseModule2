@@ -38,6 +38,15 @@ public class ManagerEmployee {
         }
     }
 
+    public static void editById (String id) {
+        for (Employee e : listEmployee) {
+            if (e.getId().equals(id)) {
+                int choice = -1;
+
+            }
+        }
+    }
+
     public static void editByIndex (int index,Employee employee) {
         listEmployee.set(index,employee);
         ReadWriteFile.getInstance().writeFile(listEmployee);
